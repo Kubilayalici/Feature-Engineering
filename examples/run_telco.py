@@ -1,6 +1,13 @@
 import pandas as pd
 from pathlib import Path
-from fe.telco import telco_basic_pipeline
+
+try:
+    from fe.telco import telco_basic_pipeline
+except ImportError:
+    # Allow running without package install
+    import sys
+    sys.path.append(str(Path(__file__).resolve().parents[1] / 'src'))
+    from fe.telco import telco_basic_pipeline
 
 
 def main():
@@ -13,4 +20,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
